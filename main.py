@@ -19,14 +19,26 @@ class CarDriveTest:
         self.run: bool = True
 
         # create a car
-        self.car = Car(x=800, y=450, car_heading=45, width=50, length=100, max_speed=300)
+        self.car = Car(car_pos=(800, 450), car_heading=0, width=50, length=100, wheel_base=80, max_speed=300)
 
     
-    def handle_events(self) -> None:
+    def handle_events(self, dt) -> None:
         """ Handle all events. """
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 self.run = False
+
+        keys = pg.key.get_pressed()
+            
+        if keys[pg.K_UP]:
+            self.car.accelerate()
+        if keys[pg.K_DOWN]:
+            self.car.brake()
+        if keys[pg.K_LEFT]:
+            self.car.steer(direction=-1, dt=dt)
+        if keys[pg.K_RIGHT]:
+            self.car.steer(direction=1, dt=dt)
+
 
     def draw_screen(self) -> None:
         """ Draw the window. """
@@ -58,8 +70,8 @@ class CarDriveTest:
                 frame_counter = 0
                 frame_timer = 0
 
-            self.handle_events()
-
+            self.handle_events(dt)
+            self.car.update(dt)
 
             self.draw_screen()          
 
