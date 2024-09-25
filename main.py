@@ -19,7 +19,7 @@ class CarDriveTest:
         self.run: bool = True
 
         # create a car
-        self.car = Car(car_pos=(800, 450), car_heading=0, width=50, length=100, wheel_base=80, max_speed=300)
+        self.car = Car(car_pos=(800, 450), car_heading=0, width=50, length=128, wheel_base=83, max_speed=300)
 
     
     def handle_events(self, dt) -> None:
