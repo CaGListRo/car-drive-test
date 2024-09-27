@@ -35,9 +35,9 @@ class CarDriveTest:
         if keys[pg.K_DOWN]:
             self.car.brake()
         if keys[pg.K_LEFT]:
-            self.car.steer(direction=-1, dt=dt)
+            self.car.steer(direction=-1)
         if keys[pg.K_RIGHT]:
-            self.car.steer(direction=1, dt=dt)
+            self.car.steer(direction=1)
 
 
     def draw_screen(self) -> None:
